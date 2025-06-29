@@ -1,20 +1,28 @@
-import type { Metadata } from "next";
+import React from "react";
 import "./globals.css";
+import { Metadata } from "next";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Next.js App",
+  title: "Radar Social",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={`antialiased`}>
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={inter.className}
+    >
+      <body>{children}</body>
     </html>
   );
 }
