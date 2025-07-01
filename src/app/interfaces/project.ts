@@ -1,4 +1,4 @@
-export interface Project {
+export interface IProject {
   id: string;
   name: string;
   description: string;
@@ -7,7 +7,7 @@ export interface Project {
   createdAt: string;
 }
 
-export interface CreateProjectData {
+export interface ICreateProjectData {
   name: string;
   description: string;
   thematicArea: string;
