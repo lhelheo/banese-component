@@ -7,4 +7,30 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// Crie um modelo de usuário
+// A ideia é que o usuário tenha um nome, email e senha e que cada usuário possua projetos que só sejam visíveis para a sessão dele quando autenticado
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  projects  Project[]
+  Project Project[] @relation("UserProjects")
+}
+
+// Crie um modelo de projeto
+// Cada projeto vai ter ao menos um usuário associado a ele, nome do projeto, descrição, data de criação e área temática
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  createdAt   DateTime @default(now())
+  area        String
+  users       User[]   @relation("UserProjects")
+  User User[]
 }
