@@ -33,3 +33,12 @@ export function createProject(
   projects.push(newProject);
   res.status(201).json(newProject);
 }
+
+export function getProjects(
+  req: Request,
+  res: Response
+): void {
+  res.status(200).json({
+    projects,
+  });
+}
