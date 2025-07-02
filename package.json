@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "dev:api": "nodemon src/api/index.ts"
+    "dev:api": "tsx watch src/api/index.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",
