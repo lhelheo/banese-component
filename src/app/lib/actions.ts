@@ -1,13 +1,12 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { CreateProjectData } from "../interfaces/project";
-import { createProject } from "../services/project";
+import { ICreateProjectData } from "../interfaces/project";
 
 export async function createProjectAction(
   formData: FormData
 ) {
   try {
-    const data: CreateProjectData = {
+    const data: ICreateProjectData = {
       name: formData.get(
         "name"
       ) as string,
@@ -34,7 +33,7 @@ export async function createProjectAction(
       );
     }
 
-    await createProject(data);
+    // await createProject(data);
     revalidatePath("/");
 
     return {
